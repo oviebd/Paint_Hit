@@ -527,7 +527,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9837da9529887461f9e525834675e7f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instance: {fileID: 0}
+  circleController: {fileID: 728050320}
   ballController: {fileID: 378121815}
+  camera: {fileID: 534669904}
 --- !u!1 &239169555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,6 +1920,7 @@ Transform:
   - {fileID: 237521368}
   - {fileID: 378121814}
   - {fileID: 728050319}
+  - {fileID: 1761584923}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5119,6 +5123,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750023824}
   m_CullTransparentMesh: 0
+--- !u!1 &1761584922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1761584923}
+  - component: {fileID: 1761584924}
+  m_Layer: 0
+  m_Name: Color Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1761584923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761584922}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 733009469}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1761584924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761584922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3510546ea7df84c3088fd29d597aefae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorList:
+  - {r: 0.50980395, g: 0.6666667, b: 0.8901961, a: 1}
+  - {r: 0.5686275, g: 0.84705883, b: 0.89411765, a: 1}
+  - {r: 0.7490196, g: 0.91764706, b: 0.9607843, a: 1}
+  - {r: 0.91764706, g: 0.99215686, b: 0.9882353, a: 1}
 --- !u!1 &1790242639
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,16 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ball : MonoBehaviour
+namespace PaintHit
 {
-    [SerializeField] private Rigidbody rigidbody;
-    private float speed = 100;
-
-    public void MoveForward()
+    public class Ball : MonoBehaviour
     {
-        rigidbody.AddForce(Vector3.forward * speed, ForceMode.Impulse);
-        Destroy(gameObject, 2.0f);
+        [SerializeField] private Rigidbody rigidbody;
+        private float speed = 100;
+        private ColorData _colorData;
+
+        public void MoveForward()
+        {
+            rigidbody.AddForce(Vector3.forward * speed, ForceMode.Impulse);
+            Destroy(gameObject, 2.0f);
+        }
+
+        public void SetColorData(ColorData colorData)
+        {
+            _colorData = colorData;
+            gameObject.GetComponent<MeshRenderer>().material.color = _colorData.color;
+        }
+
+        public ColorData GetColorData()
+        {
+            return _colorData;
+        }
+
+
     }
-
-
 }
+

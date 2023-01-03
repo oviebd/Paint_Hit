@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace PaintHit
 {
     public class CircleFragment : MonoBehaviour
     {
         private MeshRenderer _meshRenderer;
-        private ColorData _colorData;
+    //    private ColorData _colorData;
 
-        private void Start()
+        private void Awake()
         {
             GetMeshRenderer();
         }
@@ -31,9 +32,11 @@ namespace PaintHit
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.GetComponent<Ball>())
+            Ball ball = collision.gameObject.GetComponent<Ball>();
+            if (ball != null)
             {
-                ColorData data = new ColorData(Color.red,1);
+
+                ColorData data = ball.GetColorData();
                 SetColor(data);
             }
         }

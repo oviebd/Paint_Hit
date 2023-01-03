@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace PaintHit
 {
@@ -10,40 +11,31 @@ namespace PaintHit
 
         List<Circle> circleList = new List<Circle>();
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                Instantiate();
-            }
-        }
+        
 
-        public void Instantiate()
+        public void InstantiateCircle()
         {
+            ColorData colorData = ColorManager.instance.GetCurrentColor();
             MoveDownAll();
             GameObject gameObject = Instantiate(circlePrefab.gameObject);
-            gameObject.transform.position = new Vector3(0, 0, 23);
-            gameObject.name = "Circle";
+            gameObject.transform.position = new Vector3(0, 10, 23);
+            gameObject.transform.DOMoveY(0, 0.2f).SetEase(Ease.InOutSine);
+            gameObject.name = "Circle " + circleList.Count;
 
             Circle circle = gameObject.GetComponent<Circle>();
+            circle.Setup(colorData);
             circleList.Add(circle);
 
         }
 
         private void MoveDownAll()
         {
-           
+
             foreach (Circle target in circleList)
             {
-                iTween.MoveBy(target.gameObject, iTween.Hash(new object[]
-                {
-                    "y",
-                    -2.98f,
-                    "easetype",
-                    iTween.EaseType.spring,
-                    "time",
-                    0.5
-                }));
+             
+                Vector3 newPos = new Vector3(target.transform.position.x, target.transform.position.y - 3.0f, target.transform.position.z);
+                target.gameObject.transform.DOMoveY(newPos.y, 0.5f).SetEase(Ease.InOutSine);
             }
         }
 

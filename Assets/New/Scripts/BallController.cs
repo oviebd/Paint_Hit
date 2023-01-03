@@ -2,26 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallController : MonoBehaviour
+namespace PaintHit
 {
-    [SerializeField] Ball ballPrefab;
-
-    private Ball _currentBall;
-
-    public void InstantiateBall()
+    public class BallController : MonoBehaviour
     {
-        GameObject gameObject = Instantiate<GameObject>(ballPrefab.gameObject, new Vector3(0, 0, -8), Quaternion.identity);
-        gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
-        _currentBall = gameObject.GetComponent<Ball>();
+        [SerializeField] Ball ballPrefab;
 
-    }
+        private Ball _currentBall;
+       
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
+        public void InstantiateBall()
         {
-            _currentBall.MoveForward();
-           Invoke("InstantiateBall",2.0f);
+
+            ColorData colorData = ColorManager.instance.GetBallColor();
+            GameObject gameObject = Instantiate<GameObject>(ballPrefab.gameObject, new Vector3(0, 0, -8), Quaternion.identity);
+            _currentBall = gameObject.GetComponent<Ball>();
+            _currentBall.SetColorData(colorData);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _currentBall.MoveForward();
+                Invoke("InstantiateBall",0.5f);
+            }
         }
     }
+
 }
+
